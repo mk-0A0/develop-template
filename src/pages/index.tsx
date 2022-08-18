@@ -1,14 +1,15 @@
-import { FormControl, FormHelperText, FormLabel, Input } from '@chakra-ui/react'
+import { useQuery } from '@apollo/client'
+import { Text } from '@chakra-ui/react'
 import type { NextPage } from 'next'
+import { PostsDocument } from './posts.generate.graphql'
 
 const Home: NextPage = () => {
+  const { data } = useQuery(PostsDocument)
   return (
     <>
-      <FormControl>
-        <FormLabel>Email address</FormLabel>
-        <Input type="email" />
-        <FormHelperText>We'll never share your email.</FormHelperText>
-      </FormControl>
+      {data?.posts.map((post) => (
+        <Text key={post.id}>{post.title}</Text>
+      ))}
     </>
   )
 }

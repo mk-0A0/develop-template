@@ -1,5 +1,5 @@
 overwrite: true
-schema: 'https://graphql-pokemon2.vercel.app/'
+schema: 'http://localhost:4000/graphql'
 documents: 'src/**/*.graphql'
 generates:
   src/type/__generate__/graphql.ts:
